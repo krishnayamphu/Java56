@@ -11,12 +11,11 @@ public class MyCanvas extends Canvas {
     public MyCanvas(){
         btn=new Button("Draw");
         btnc=new Button("Clear");
-        this.setBackground(Color.cyan);
     }
 
     @Override
     public void paint(Graphics g) {
-        super.paint(g);
+
     }
 
     public static void main(String[] args) {
@@ -33,14 +32,17 @@ public class MyCanvas extends Canvas {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("hi");
                 Graphics g= canvas.getGraphics();
-                g.fillRect(200,50,100,100);
+//                g.fillRect(200,50,100,100);
+                int[] x={50,100,150};
+                int[] y={150,50,150};
+                g.drawPolygon(x,y,3);
             }
         });
         canvas.btnc.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                canvas.setBackground(Color.red);
-                System.out.println("repaint");
+                Graphics g= canvas.getGraphics();
+                g.clearRect(0,0,canvas.getWidth(),canvas.getHeight());
             }
         });
 
